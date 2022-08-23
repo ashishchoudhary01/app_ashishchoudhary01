@@ -7,7 +7,7 @@ pipeline {
 
     tools {
         nodejs "nodejs"
-        dockerTool "docker"
+        // dockerTool "docker"
     }
 
     stages {
@@ -25,11 +25,11 @@ pipeline {
                 }
             }
         }
-        stage('Docker build') {
-            steps {
-                sh 'docker build -t ashishchoudhary01nagarro/i-ashishchoudhary01-develop:latest --no-cache .'
-            }
-        }
+        // stage('Docker build') {
+        //     steps {
+        //         sh 'docker build -t ashishchoudhary01nagarro/i-ashishchoudhary01-develop:latest --no-cache .'
+        //     }
+        // }
         // untested code - not part of the assignment
         // stage('Docker push to Dockerhub') {
         //     steps {
