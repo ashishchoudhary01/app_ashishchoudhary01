@@ -8,7 +8,7 @@ pipeline {
                 sh 'npm install'
             }
         }
-        stage('Test case execution') {
+        stage('Sonarqube Analysis') {
             steps {
                 echo 'Testing..'
                 sh 'npm test'
