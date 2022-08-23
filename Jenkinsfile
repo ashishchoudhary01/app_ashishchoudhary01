@@ -34,7 +34,7 @@ pipeline {
             steps {
                 script {
                     withDockerRegistry(toolName: 'docker') {
-                        sh 'docker build -t ashishchoudhary01nagarro/i-ashishchoudhary01-develop:latest --no-cache .'
+                        sh 'docker push ashishchoudhary01nagarro/i-ashishchoudhary01-develop:latest'
                     }
                 }
             }
