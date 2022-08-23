@@ -8,9 +8,10 @@ pipeline {
                 sh 'npm install'
             }
         }
-        stage('SonarQube Analysis') {
+        stage('Test case execution') {
             steps {
                 echo 'Testing..'
+                sh 'npm test'
             }
         }
         stage('Kubernetes Deployment') {
