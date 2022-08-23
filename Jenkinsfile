@@ -1,6 +1,15 @@
 pipeline {
     agent any
 
+    environment {
+        scannerHome = tool 'sonar_scanner'
+    }
+
+    tools {
+        nodejs "nodejs"
+        dockerTool "docker"
+    }
+
     stages {
         stage('Build') {
             steps {
@@ -11,12 +20,14 @@ pipeline {
         stage('Sonarqube Analysis') {
             steps {
                 echo 'Testing..'
-                sh 'npm test'
+                withSonarQubeEnv('SonarQube') {
+                    sh '${scannerHome}/bin/sonar-scanner'
+                }
             }
         }
         stage('Kubernetes Deployment') {
             steps {
-                echo 'Deploying....'
+                echo 'Deploying..'
             }
         }
     }
