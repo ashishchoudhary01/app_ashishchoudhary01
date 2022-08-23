@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        scannerHome = tool 'sonar_scanner'
+        scannerHome = tool 'SonarQubeScanner'
     }
 
     tools {
@@ -20,7 +20,7 @@ pipeline {
         stage('Sonarqube Analysis') {
             steps {
                 echo 'Testing..'
-                withSonarQubeEnv('SonarQube') {
+                withSonarQubeEnv('SonarQubeScanner') {
                     sh '${scannerHome}/bin/sonar-scanner'
                 }
             }
