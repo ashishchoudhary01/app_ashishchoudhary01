@@ -33,9 +33,7 @@ pipeline {
         stage('Docker push to Dockerhub') {
             steps {
                 script {
-                    withDockerRegistry(toolName: 'docker') {
-                        sh 'docker push ashishchoudhary01nagarro/i-ashishchoudhary01-develop:latest'
-                    }
+                    sh 'docker push ashishchoudhary01nagarro/i-ashishchoudhary01-develop:latest'
                 }
             }
         }
