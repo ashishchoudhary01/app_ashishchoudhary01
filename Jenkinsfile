@@ -30,13 +30,16 @@ pipeline {
                 sh 'docker build -t ashishchoudhary01nagarro/i-ashishchoudhary01-develop:latest --no-cache .'
             }
         }
-        stage('Docker push to Dockerhub') {
-            steps {
-                script {
-                    sh 'docker push ashishchoudhary01nagarro/i-ashishchoudhary01-develop:latest'
-                }
-            }
-        }
+        // untested code - not part of the assignment
+        // stage('Docker push to Dockerhub') {
+        //     steps {
+        //         script {
+        //             withDockerRegistry(toolName: 'docker') {
+        //                 sh 'docker push ashishchoudhary01nagarro/i-ashishchoudhary01-develop:latest'
+        //             }
+        //         }
+        //     }
+        // }
         stage('Kubernetes Deployment') {
             steps {
                 echo 'Deploying..'
