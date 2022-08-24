@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubernetes-cluster-ashishchoudhary01
+  labels:
+    app: nodeapp
+spec:
+  template:
+    metadata:
+      name: nodeapp-pod
+      labels:
+        app: nodeapp
+        type: front-end
+    spec:
+      containers:
+        - name: node-container
+          image: ashishchoudhary01nagarro/i-ashishchoudhary01-develop:latest
+  replicas: 4
+  selector:
+    matchLabels:
+      type: front-end
+      app: nodeapp
