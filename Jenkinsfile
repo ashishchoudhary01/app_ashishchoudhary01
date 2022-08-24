@@ -43,8 +43,6 @@ pipeline {
         stage('Kubernetes Deployment') {
             steps {
                 echo 'Deploying..'
-                sh 'gcloud auth login'
-                sh 'gcloud container clusters get-credentials nagp-cluster --zone us-central1-c --project nagp-2022'
                 sh 'kubectl apply -f deployment-definition.yaml --namespace=kubernetes-cluster-ashishchoudhary01'
             }
         }
