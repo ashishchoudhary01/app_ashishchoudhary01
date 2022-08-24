@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: kubernetes-cluster-ashishchoudhary01
+  namespace: kubernetes-cluster-ashishchoudhary01
   labels:
     app: nodeapp
 spec:
@@ -15,8 +16,28 @@ spec:
       containers:
         - name: node-container
           image: ashishchoudhary01nagarro/i-ashishchoudhary01-develop:latest
+          ports:
+            - name: http
+              containerPort: 3010
+              protocol: TCP 
   replicas: 4
   selector:
     matchLabels:
       type: front-end
       app: nodeapp
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: node-app-lb
+  namespace: kubernetes-cluster-ashishchoudhary01
+  labels:
+    app: node-app-lb
+spec:
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3010
+  selector:
+    app: nodeapp
+  type: LoadBalancer
