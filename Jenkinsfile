@@ -16,7 +16,8 @@ pipeline {
         }
         stage('Kubernetes Deployment') {
             steps {
-                echo 'Deploying....'
+                echo 'Deploying..'
+                sh 'kubectl apply -f deployment-definition.yaml --namespace=kubernetes-cluster-ashishchoudhary01'
             }
         }
     }
